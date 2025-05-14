@@ -1,50 +1,100 @@
-<!-- INDOOR -->
-<div class="categories">
-  <h3>Indoor</h3>
-  <div class="product" data-id="1">
-    <img src="images/Athyrium.filix-femina-frondcloser_iNat-square.webp" alt="Fern">
-    <p>Boston Fern</p>
-    <span>$15</span>
-    <button>Add to Cart</button>
-  </div>
-  <div class="product" data-id="2">
-    <img src="images/qYNPupRnspGWPF4886Z7hB.jpg" alt="Peace Lily">
-    <p>Peace Lily</p>
-    <span>$18</span>
-    <button>Add to Cart</button>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop Plants</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Green Haven</h1>
+    <nav>
+      <a href="cart.html">🛒 <span id="cart-count">0</span></a>
+    </nav>
+  </header>
 
-<!-- OUTDOOR -->
-<div class="categories">
-  <h3>Outdoor</h3>
-  <div class="product" data-id="3">
-    <img src="images/photograph-of-a-rose-1024x771.webp" alt="Rose">
-    <p>Rose Bush</p>
-    <span>$25</span>
-    <button>Add to Cart</button>
-  </div>
-  <div class="product" data-id="4">
-    <img src="images/Single_lavender_flower02.jpg" alt="Lavender">
-    <p>Lavender</p>
-    <span>$20</span>
-    <button>Add to Cart</button>
-  </div>
-</div>
+  <main class="products">
+    <h2>Our Plants</h2>
 
-<!-- SUCCULENTS -->
-<div class="categories">
-  <h3>Succulents</h3>
-  <div class="product" data-id="5">
-    <img src="images/rosy-soil-propagate-aloe_158b2a23-a01e-4752-8057-3c576fd8a49e_1200x630.webp" alt="Aloe Vera">
-    <p>Aloe Vera</p>
-    <span>$10</span>
-    <button>Add to Cart</button>
-  </div>
-  <div class="product" data-id="6">
-    <img src="images/Jade-Properties-Mooncat-Crystals-938.webp" alt="Jade Plant">
-    <p>Jade Plant</p>
-    <span>$12</span>
-    <button>Add to Cart</button>
-  </div>
-</div>
+    <!-- Indoor -->
+    <div class="categories">
+      <h3>Indoor</h3>
+      <div class="product" data-id="1">
+        <img src="images/Athyrium.filix-femina-frondcloser_iNat-square.webp" alt="Fern">
+        <p>Boston Fern</p>
+        <span>$15</span>
+        <button>Add to Cart</button>
+      </div>
+      <div class="product" data-id="2">
+        <img src="images/qYNPupRnspGWPF4886Z7hB.jpg" alt="Peace Lily">
+        <p>Peace Lily</p>
+        <span>$18</span>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Outdoor -->
+    <div class="categories">
+      <h3>Outdoor</h3>
+      <div class="product" data-id="3">
+        <img src="images/photograph-of-a-rose-1024x771.webp" alt="Rose">
+        <p>Rose Bush</p>
+        <span>$25</span>
+        <button>Add to Cart</button>
+      </div>
+      <div class="product" data-id="4">
+        <img src="images/Single_lavender_flower02.jpg" alt="Lavender">
+        <p>Lavender</p>
+        <span>$20</span>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Succulents -->
+    <div class="categories">
+      <h3>Succulents</h3>
+      <div class="product" data-id="5">
+        <img src="images/rosy-soil-propagate-aloe_158b2a23-a01e-4752-8057-3c576fd8a49e_1200x630.webp" alt="Aloe Vera">
+        <p>Aloe Vera</p>
+        <span>$10</span>
+        <button>Add to Cart</button>
+      </div>
+      <div class="product" data-id="6">
+        <img src="images/Jade-Properties-Mooncat-Crystals-938.webp" alt="Jade Plant">
+        <p>Jade Plant</p>
+        <span>$12</span>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cartCount = document.getElementById('cart-count');
+      const buttons = document.querySelectorAll('.product button');
+      const products = document.querySelectorAll('.product');
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      if (cartCount) cartCount.innerText = cart.length;
+
+      buttons.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+          const product = products[index];
+          const item = {
+            id: product.dataset.id,
+            name: product.querySelector('p').innerText,
+            price: parseFloat(product.querySelector('span').innerText.replace('$', '')),
+            image: product.querySelector('img').src
+          };
+          cart.push(item);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          btn.disabled = true;
+          if (cartCount) cartCount.innerText = cart.length;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+

@@ -6,6 +6,10 @@
   <title>Green Haven - Welcome</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
     .landing {
       position: relative;
       text-align: center;
@@ -13,7 +17,7 @@
     }
     .bg-img {
       width: 100%;
-      height: 80vh;
+      height: 90vh;
       object-fit: cover;
       filter: brightness(60%);
     }
@@ -22,7 +26,15 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      text-align: center;
       max-width: 90%;
+    }
+    .intro-text h2 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+    .intro-text p {
+      font-size: 1.2em;
     }
     .btn {
       background-color: #4CAF50;
@@ -31,29 +43,27 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 5px;
+      margin-top: 15px;
       display: inline-block;
-      margin-top: 10px;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Green Haven</h1>
-    <nav>
-      <a href="products.html" class="btn">Get Started</a>
-    </nav>
   </header>
 
   <main>
     <section class="landing">
-      <img src="images/background.jpg" alt="Plants Background" class="bg-img" />
+      <img src="images/background.jpg" alt="Background Plant Image" class="bg-img" />
       <div class="intro-text">
         <h2>Welcome to Green Haven</h2>
-        <p>Your one-stop shop for beautiful and healthy houseplants. From indoor greens to exotic finds, we help you bring nature inside!</p>
-        <a href="products.html" class="btn">Shop Now</a>
+        <p>Your one-stop shop for healthy and beautiful houseplants. Discover our collection of indoor greens and outdoor blooms curated to bring life to your space.</p>
+        <a href="products.html" class="btn">Get Started</a>
       </div>
     </section>
   </main>
 </body>
 </html>
+
 
